@@ -1,0 +1,7 @@
+{
+    "UniqueModName": "QM_ChangeExploredColor",
+    "Assemblies": [
+        "QM-ChangeExploredColor.dll"
+    ],
+    "Dependencies": []
+}

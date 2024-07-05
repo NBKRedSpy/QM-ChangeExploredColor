@@ -1,7 +1,5 @@
 ﻿// Ignore Spelling: Plugin
 
-using BepInEx.Configuration;
-using BepInEx;
 using HarmonyLib;
 using MGSC;
 using System;
@@ -13,62 +11,69 @@ using System.Text;
 using System.Threading.Tasks;
 using UnityEngine;
 using System.CodeDom;
+using Unity;
+using System.Runtime.Serialization.Json;
+using SimpleJSON;
 
 namespace QM_ChangeExploredColor
 {
-    [BepInPlugin("nbk_redspy.QM_ChangeExploredColor", "QM_ChangeExploredColor", "1.0.0")]
-    public class Plugin : BaseUnityPlugin
+    public class Plugin
     {
         public static Color ExploredOutlineColor { get; private set; }
-        public static BepInEx.Logging.ManualLogSource Log { get; set; }
 
-        public Plugin()
+        static Plugin()
         {
-            ExploredOutlineColor = Config.Bind("General", nameof(Plugin.ExploredOutlineColor), Color.green, "The outline color for items that have already been explored").Value;
+            ExploredOutlineColor = Color.green;
         }
 
-        private void Awake()
+        [Hook(ModHookType.AfterBootstrap)]
+        public static void Bootstrap(IModContext context)
         {
-            Log = Logger;
+            SetConfig();
             Harmony harmony = new Harmony("nbk_redspy.QM_ChangeExploredColor");
             harmony.PatchAll();
 
-
-
-
-
         }
 
-        public static bool FunctionHashMatches(Type type, string functionName, string targetHash)
+        public static void SetConfig()
         {
-            MethodInfo method = AccessTools.Method(type, functionName);
+            string configPath = Path.Combine(Application.persistentDataPath, Assembly.GetExecutingAssembly().GetName().Name) + ".json";
 
-            if(method == null)
+            Color defaultColor = Color.green;
+            ExploredOutlineColor = defaultColor;
+
+            if (File.Exists(configPath))
             {
-                Log.LogError($"Type: {type.Name} Function: {functionName} could not be found");
-                return false;
+                try
+                {
+                    JSONNode node = JSON.Parse(File.ReadAllText(configPath));
+                    ExploredOutlineColor = node[nameof(Plugin.ExploredOutlineColor)].ReadColor(defaultColor);
+                }
+                catch (Exception ex)
+                {
+                    Debug.LogError($"Error deserializing configuration file {configPath}");
+                    Debug.LogException(ex);
+                }
+            }
+            else
+
+            {
+                //Write the default file.
+                try
+                {
+                    JSONObject obj = new JSONObject();
+                    obj.Add(nameof(Plugin.ExploredOutlineColor), new JSONObject().WriteColor(Color.green));
+                    string text = obj.ToString();
+
+                    File.WriteAllText(configPath, text);
+                }
+                catch (Exception ex)
+                {
+                    Debug.LogError($"Error writing configuration file {configPath}");
+                    Debug.LogException(ex);
+                }
             }
 
-            byte[] ilData = method.GetMethodBody().GetILAsByteArray();
-
-            var crypt = new System.Security.Cryptography.SHA256Managed();
-            var hash = new System.Text.StringBuilder();
-            byte[] crypto = crypt.ComputeHash(ilData);
-            foreach (byte theByte in crypto)
-            {
-                hash.Append(theByte.ToString("x2"));
-            }
-
-            string computedHash = hash.ToString().ToUpper();
-
-            bool matches = targetHash == computedHash; 
-
-            if( !matches)
-            {
-                Log.LogInfo($"Hash does not match.  Type: {type.Name} {functionName} actual hash: {computedHash} target: {targetHash}");
-            }
-
-            return matches;
         }
 
     }

@@ -15,19 +15,20 @@ namespace QM_ChangeExploredColor
 
         public static bool Prefix(ItemOnFloor __instance, ItemStorage ___Storage, bool val) 
         {
-            
+
             if (___Storage.Empty)
             {
                 val = false;
             }
 
-
             __instance._spriteRenderer.color = (val ? __instance._highlightedColor : __instance._normalColor);
-            __instance._spriteOutline.color = (___Storage.WasExamined ?  Plugin.ExploredOutlineColor :  
-                val ?  __instance._highlightedBorderColor : Color.clear);
+            __instance._spriteOutline.color = (___Storage.WasExamined ? 
+                Plugin.ExploredOutlineColor :
+                val ? __instance._highlightedBorderColor : Color.clear);
             __instance._spriteOutline.enabled = val;
 
             return false;
+
 
         }
     }

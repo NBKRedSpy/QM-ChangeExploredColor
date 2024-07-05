@@ -15,22 +15,24 @@ namespace QM_ChangeExploredColor
     public static class MapObstacle_Patch
     {
 
-        public static bool Prepare()
-        {
+        //public static bool Prepare()
+        //{
 
-            //Protection for a pretty heavy handed patch.
-            bool hashMatches = Plugin.FunctionHashMatches(typeof(MapObstacle), nameof(MapObstacle.Highlight),
-                "3C390ABCE6049197B3849147B3B5F7B6CBCE7EB739B8A4D80B98D3DC5DB132B5");
+        //    //Protection for a pretty heavy handed patch.
+        //    //TODO:  Find a better way since the IL is changing with the exact same code.
+        //    // Maybe a transpile.
+        //    bool hashMatches = Plugin.FunctionHashMatches(typeof(MapObstacle), nameof(MapObstacle.Highlight),
+        //        "3C390ABCE6049197B3849147B3B5F7B6CBCE7EB739B8A4D80B98D3DC5DB132B5");
 
-            if(!hashMatches)
-            {
-                Plugin.Log.LogError("Function changed.  Aborting MapObstacle.Highlight patch");
-            }
+        //    if(!hashMatches)
+        //    {
+        //        Debug.LogError("Function changed.  Aborting MapObstacle.Highlight patch");
+        //    }
 
-            return hashMatches;
+        //    return hashMatches;
 
 
-        }
+        //}
         public static bool Prefix(MapObstacle __instance, bool val, bool isDestroyable)
         {
 

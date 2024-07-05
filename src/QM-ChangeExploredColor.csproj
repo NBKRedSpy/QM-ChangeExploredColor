@@ -4,8 +4,10 @@
 		<OutputType>Library</OutputType>
 		<RootNamespace>QM_ChangeExploredColor</RootNamespace>
 		<GenerateAssemblyInfo>false</GenerateAssemblyInfo>
+		<VersionPrefix>1.1.0</VersionPrefix>
 	</PropertyGroup>
 	<ItemGroup>
+		<PackageReference Include="Lib.Harmony" Version="2.3.3" />
 		<PackageReference Include="Microsoft.CSharp" Version="4.7.0" />
 		<PackageReference Include="System.Data.DataSetExtensions" Version="4.5.0" />
 	</ItemGroup>
@@ -20,21 +22,33 @@
 			<HintPath>$(GAME_PATH)\Quasimorph_Data\Managed\Assembly-CSharp.dll</HintPath>
 			<Private>False</Private>
 		</Reference>
+		<Reference Include="Mono.Cecil">
+		  <HintPath>E:\Downloads\Modding\BepInEx_win_x64_5.4.23.1\BepInEx\core\Mono.Cecil.dll</HintPath>
+		</Reference>
+		<Reference Include="Mono.Cecil.Mdb">
+		  <HintPath>E:\Downloads\Modding\BepInEx_win_x64_5.4.23.1\BepInEx\core\Mono.Cecil.Mdb.dll</HintPath>
+		</Reference>
+		<Reference Include="Mono.Cecil.Pdb">
+		  <HintPath>E:\Downloads\Modding\BepInEx_win_x64_5.4.23.1\BepInEx\core\Mono.Cecil.Pdb.dll</HintPath>
+		</Reference>
+		<Reference Include="Mono.Cecil.Rocks">
+		  <HintPath>E:\Downloads\Modding\BepInEx_win_x64_5.4.23.1\BepInEx\core\Mono.Cecil.Rocks.dll</HintPath>
+		</Reference>
+		<Reference Include="MonoMod.RuntimeDetour">
+		  <HintPath>E:\Downloads\Modding\BepInEx_win_x64_5.4.23.1\BepInEx\core\MonoMod.RuntimeDetour.dll</HintPath>
+		</Reference>
+		<Reference Include="MonoMod.Utils">
+		  <HintPath>E:\Downloads\Modding\BepInEx_win_x64_5.4.23.1\BepInEx\core\MonoMod.Utils.dll</HintPath>
+		</Reference>
+		<Reference Include="SimpleJSON">
+		  <HintPath>D:\Games\Steam\steamapps\common\Quasimorph\Quasimorph_Data\Managed\SimpleJSON.dll</HintPath>
+		</Reference>
 		<Reference Include="UnityEngine">
 			<HintPath>$(GAME_PATH)\Quasimorph_Data\Managed\UnityEngine.dll</HintPath>
 			<Private>False</Private>
 		</Reference>
 		<Reference Include="UnityEngine.CoreModule">
 			<HintPath>$(GAME_PATH)\Quasimorph_Data\Managed\UnityEngine.CoreModule.dll</HintPath>
-			<Private>False</Private>
-		</Reference>
-
-		<Reference Include="0Harmony">
-			<HintPath>$(GAME_PATH)\BepInEx\core\0Harmony.dll</HintPath>
-			<Private>False</Private>
-		</Reference>
-		<Reference Include="BepInEx">
-			<HintPath>$(GAME_PATH)\BepInEx\core\BepInEx.dll</HintPath>
 			<Private>False</Private>
 		</Reference>
 	</ItemGroup>
@@ -58,16 +72,16 @@
 		<Message Text="Game Path: $(GAME_PATH)" Importance="high" />
 		<Message Text="Output Path: $(OUTPUT_PATH)" Importance="high" />
 	</Target>
-	<Target Name="CopyToGameDir" AfterTargets="AfterBuild">
+	<!--<Target Name="CopyToGameDir" AfterTargets="AfterBuild">
 		<MakeDir Directories="$(OUTPUT_PATH)" />
 		<Copy SourceFiles="$(TargetDir)$(TargetName).dll" DestinationFolder="$(OUTPUT_PATH)"/>
 		<Copy SourceFiles="$(TargetDir)$(TargetName).pdb" DestinationFolder="$(OUTPUT_PATH)"/>
-	</Target>
+	</Target>-->
 	<PropertyGroup>
 		<PACKAGE_TEMP_PATH>$(ProjectDir)../PackageTemp/</PACKAGE_TEMP_PATH>
 	</PropertyGroup>
 
-	<Target Condition="'$(Configuration)' == 'Release'" Name="PackageRelease" AfterTargets="AfterBuild">
+	<!--<Target Condition="'$(Configuration)' == 'Release'" Name="PackageRelease" AfterTargets="AfterBuild">
 		<RemoveDir Directories="$(PACKAGE_TEMP_PATH)" />
 		<MakeDir Directories="$(PACKAGE_TEMP_PATH)" />
 		<Copy SourceFiles="$(TargetDir)$(TargetName).dll" DestinationFolder="$(PACKAGE_TEMP_PATH)"/>
@@ -75,7 +89,7 @@
 		<ZipDirectory SourceDirectory="$(PACKAGE_TEMP_PATH)" DestinationFile="$(ProjectDir)../$(TargetName).zip" />
 		<RemoveDir Directories="$(PACKAGE_TEMP_PATH)" />
 
-	</Target>
+	</Target>-->
 	<ItemGroup>
 	  <Reference Update="System">
 	    <Private>False</Private>
@@ -121,5 +135,8 @@
 	    <Private>False</Private>
 	  </Reference>
 	</ItemGroup>
+	<Target Name="PostBuild" AfterTargets="PostBuildEvent">
+	  <Exec Command="set targetDir=D:\Games\Steam\steamapps\workshop\content\2059170\3281977248\&#xD;&#xA;&#xD;&#xA;xcopy /y $(TargetDir)$(TargetName).* %25targetDir%25&#xD;&#xA;xcopy /y $(TargetDir)0Harmony.dll %25targetDir%25&#xD;&#xA;xcopy /y $(TargetDir)Mono.Cecil.dll %25targetDir%25&#xD;&#xA;xcopy /y $(TargetDir)MonoMod*.dll %25targetDir%25&#xD;&#xA;&#xD;&#xA;copy /y ..\modmanifest.json %25targetDir%25&#xD;&#xA;" />
+	</Target>
 	
 </Project>
