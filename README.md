@@ -1,5 +1,6 @@
 # Quasimorph Explored Outline
 
+![three search states](media/cabinets-callouts.png)
 
 # Info
 
@@ -8,8 +9,6 @@ Storage containers are items on the floor, cabinets, bodies, etc.
 
 Unexplored and empty containers will still follow the normal game rules where white is unexplored and a light outline for empty.
 
-
-![Explored and Unexplored body differences](./media/body-difference.png)
 
 # Configuration
 The configuration file is located at ```%UserProfile%\AppData\LocalLow\Magnum Scriptum Ltd\Quasimorph\QM-ChangeExploredColor.json``` .
