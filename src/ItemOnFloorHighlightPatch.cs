@@ -22,9 +22,17 @@ namespace QM_ChangeExploredColor
             }
 
             __instance._spriteRenderer.color = (val ? __instance._highlightedColor : __instance._normalColor);
-            __instance._spriteOutline.color = (___Storage.WasExamined ? 
-                Plugin.ExploredOutlineColor :
-                val ? __instance._highlightedBorderColor : Color.clear);
+
+
+            if (val && ___Storage.WasExamined)
+            {
+                __instance._spriteOutline.color = Plugin.ExploredOutlineColor;
+            }
+            else
+            {
+                __instance._spriteOutline.color = val ? __instance._highlightedBorderColor : Color.clear;
+            }
+
             __instance._spriteOutline.enabled = val;
 
             return false;

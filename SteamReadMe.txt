@@ -1,12 +1,12 @@
 [h1]Quasimorph Explored Outline[/h1]
 
+
 [h1]Info[/h1]
 
 This mod changes the outline of storage containers that have already been opened, even if they have items still in them.  By default the outline is green, but this can be configured.
 Storage containers are items on the floor, cabinets, bodies, etc.
 
 Unexplored and empty containers will still follow the normal game rules where white is unexplored and a light outline for empty.
-
 
 [h1]Configuration[/h1]
 
@@ -36,6 +36,10 @@ The file will be created the first time the game is run.
 Source code is available on GitHub https://github.com/NBKRedSpy/QM-ChangeExploredColor
 
 [h1]Change Log[/h1]
+
+[h2]1.2.0[/h2]
+
+Fixed empty storage using the "explored" color instead of the default "clear" color.
 
 [h2]1.1.0[/h2]
 

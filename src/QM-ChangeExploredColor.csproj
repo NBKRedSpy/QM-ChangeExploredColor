@@ -4,7 +4,7 @@
 		<OutputType>Library</OutputType>
 		<RootNamespace>QM_ChangeExploredColor</RootNamespace>
 		<GenerateAssemblyInfo>false</GenerateAssemblyInfo>
-		<VersionPrefix>1.1.0</VersionPrefix>
+		<VersionPrefix>1.2.0</VersionPrefix>
 	</PropertyGroup>
 	<ItemGroup>
 		<PackageReference Include="Lib.Harmony" Version="2.3.3" />

@@ -14,25 +14,6 @@ namespace QM_ChangeExploredColor
     [HarmonyPatch(typeof(MapObstacle), nameof(MapObstacle.Highlight))]
     public static class MapObstacle_Patch
     {
-
-        //public static bool Prepare()
-        //{
-
-        //    //Protection for a pretty heavy handed patch.
-        //    //TODO:  Find a better way since the IL is changing with the exact same code.
-        //    // Maybe a transpile.
-        //    bool hashMatches = Plugin.FunctionHashMatches(typeof(MapObstacle), nameof(MapObstacle.Highlight),
-        //        "3C390ABCE6049197B3849147B3B5F7B6CBCE7EB739B8A4D80B98D3DC5DB132B5");
-
-        //    if(!hashMatches)
-        //    {
-        //        Debug.LogError("Function changed.  Aborting MapObstacle.Highlight patch");
-        //    }
-
-        //    return hashMatches;
-
-
-        //}
         public static bool Prefix(MapObstacle __instance, bool val, bool isDestroyable)
         {
 
@@ -52,10 +33,9 @@ namespace QM_ChangeExploredColor
             Color color = ((__instance.Store != null && __instance.Store.storage.Empty) ? __instance.highlightedEmptyStorageColor : __instance.highlightedColor);
             Color color2 = ((__instance.Store != null && __instance.Store.storage.Empty) ? __instance.highlightedEmptyStorageBorderColor : __instance.highlightedBorderColor);
 
-
             //--------- Start Mod Change
 
-            if (__instance.Store != null && __instance.Store.storage.WasExamined)
+            if (__instance.Store != null && !__instance.Store.storage.Empty && __instance.Store.storage.WasExamined)
             {
                 color2 = Plugin.ExploredOutlineColor;
             }

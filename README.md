@@ -24,6 +24,9 @@ Source code is available on GitHub https://github.com/NBKRedSpy/QM-ChangeExplore
 
 # Change Log
 
+## 1.2.0
+Fixed empty storage using the "explored" color instead of the default "clear" color.
+
 ## 1.1.0
 Converted to Steam Workshop
 
