@@ -18,6 +18,9 @@ The file will be created the first time the game is run.
 |--|--|--|
 |ExploredOutlineColor|Green = RGBA(0,1,0,1)|The outline color for items that have already been explored.|
 
+# Support
+If you enjoy my mods and want to leave a tip, check out my [Ko-Fi](https://ko-fi.com/nbkredspy71915) page.
+Thanks!
 
 # Source Code
 Source code is available on GitHub https://github.com/NBKRedSpy/QM-ChangeExploredColor
