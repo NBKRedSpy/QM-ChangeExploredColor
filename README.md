@@ -19,7 +19,7 @@ The file will be created the first time the game is run.
 |ExploredOutlineColor|Green = RGBA(0,1,0,1)|The outline color for items that have already been explored.|
 
 # Support
-If you enjoy my mods and want to leave a tip, check out my [Ko-Fi](https://ko-fi.com/nbkredspy71915) page.
+If you enjoy my mods and want to buy me a coffee, check out my [Ko-Fi](https://ko-fi.com/nbkredspy71915) page.
 Thanks!
 
 # Source Code
