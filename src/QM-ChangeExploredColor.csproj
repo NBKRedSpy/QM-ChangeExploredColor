@@ -135,7 +135,7 @@
 	  </Reference>
 	</ItemGroup>
 	<Target Name="PostBuild" AfterTargets="PostBuildEvent">
-	  <Exec Command="set targetDir=D:\Games\Steam\steamapps\workshop\content\2059170\3281977248\&#xD;&#xA;&#xD;&#xA;xcopy /y $(TargetDir)$(TargetName).* %25targetDir%25&#xD;&#xA;xcopy /y $(TargetDir)0Harmony.dll %25targetDir%25&#xD;&#xA;xcopy /y $(TargetDir)Mono.Cecil.dll %25targetDir%25&#xD;&#xA;xcopy /y $(TargetDir)MonoMod*.dll %25targetDir%25&#xD;&#xA;&#xD;&#xA;copy /y ..\modmanifest.json %25targetDir%25&#xD;&#xA;" />
+	  <Exec Command="set targetDir=D:\Games\Steam\steamapps\workshop\content\2059170\3281977248\&#xD;&#xA;&#xD;&#xA;xcopy /y $(TargetDir)$(TargetName).* %25targetDir%25&#xD;&#xA;xcopy /y $(TargetDir)0Harmony.dll %25targetDir%25&#xD;&#xA;&#xD;&#xA;copy /y ..\modmanifest.json %25targetDir%25&#xD;&#xA;" />
 	</Target>
 	
 </Project>
