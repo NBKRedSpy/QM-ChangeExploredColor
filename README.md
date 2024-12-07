@@ -11,7 +11,7 @@ Unexplored and empty containers will still follow the normal game rules where wh
 
 
 # Configuration
-The configuration file is located at ```%UserProfile%\AppData\LocalLow\Magnum Scriptum Ltd\Quasimorph\QM-ChangeExploredColor.json``` .
+The configuration file is located at ```%UserProfile%\AppData\LocalLow\Magnum Scriptum Ltd\Quasimorph_ModConfigs\QM-ChangeExploredColor\QM-ChangeExploredColor.json``` .
 The file will be created the first time the game is run.
 
 |Name|Default|Description|
@@ -26,6 +26,9 @@ Thanks!
 Source code is available on GitHub https://github.com/NBKRedSpy/QM-ChangeExploredColor
 
 # Change Log
+
+## 1.3.0
+Moved config file directory.
 
 ## 1.2.0
 Fixed empty storage using the "explored" color instead of the default "clear" color.
