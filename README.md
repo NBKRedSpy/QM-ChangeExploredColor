@@ -2,6 +2,10 @@
 
 ![three search states](media/cabinets-callouts.png)
 
+# Temporary Update
+
+This is a temporary update to quickly provide 0.8.5 support.  There is an issue with corpses not highlighting based on explored state.  This is being researched.
+
 # Info
 
 This mod changes the outline of storage containers that have already been opened, even if they have items still in them.  By default the outline is green, but this can be configured.
@@ -26,6 +30,10 @@ Thanks!
 Source code is available on GitHub https://github.com/NBKRedSpy/QM-ChangeExploredColor
 
 # Change Log
+
+## 1.4.0
+* v0.8.5 compatible.
+* Currently corpse highlights does not work.
 
 ## 1.3.0
 Moved config file directory.

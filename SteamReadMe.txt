@@ -1,6 +1,10 @@
 [h1]Quasimorph Explored Outline[/h1]
 
 
+[h1]Temporary Update[/h1]
+
+This is a temporary update to quickly provide 0.8.5 support.  There is an issue with corpses not highlighting based on explored state.  This is being researched.
+
 [h1]Info[/h1]
 
 This mod changes the outline of storage containers that have already been opened, even if they have items still in them.  By default the outline is green, but this can be configured.
@@ -10,7 +14,7 @@ Unexplored and empty containers will still follow the normal game rules where wh
 
 [h1]Configuration[/h1]
 
-The configuration file is located at [i]%UserProfile%\AppData\LocalLow\Magnum Scriptum Ltd\Quasimorph_ModConfigs\QM-ChangeExploredColor.json[/i] .
+The configuration file is located at [i]%UserProfile%\AppData\LocalLow\Magnum Scriptum Ltd\Quasimorph_ModConfigs\QM-ChangeExploredColor\QM-ChangeExploredColor.json[/i] .
 The file will be created the first time the game is run.
 [table]
 [tr]
@@ -41,6 +45,12 @@ Thanks!
 Source code is available on GitHub https://github.com/NBKRedSpy/QM-ChangeExploredColor
 
 [h1]Change Log[/h1]
+
+[h2]1.4.0[/h2]
+[list]
+[*]v0.8.5 compatible.
+[*]Currently corpse highlights does not work.
+[/list]
 
 [h2]1.3.0[/h2]
 

@@ -2,7 +2,6 @@
 	<PropertyGroup>
 		<TargetFramework>net48</TargetFramework>
 		<OutputType>Library</OutputType>
-		<RootNamespace>QM_ChangeExploredColor</RootNamespace>
 		<GenerateAssemblyInfo>false</GenerateAssemblyInfo>
 	</PropertyGroup>
 	<ItemGroup>
@@ -10,51 +9,9 @@
 		<PackageReference Include="Microsoft.CSharp" Version="4.7.0" />
 		<PackageReference Include="System.Data.DataSetExtensions" Version="4.5.0" />
 	</ItemGroup>
-	<ItemGroup>
-		<PackageReference Include="BepInEx.AssemblyPublicizer.MSBuild" Version="0.4.2" />
-	</ItemGroup>
-	<ItemGroup>
-		<Compile Remove="packages\BepInEx.AssemblyPublicizer.MSBuild.0.4.2\contentFiles\cs\any\IgnoresAccessChecksToAttribute.cs" />
-	</ItemGroup>
-	<ItemGroup>
-		<Reference Include="Assembly-CSharp" publicize="true">
-			<HintPath>$(GAME_PATH)\Quasimorph_Data\Managed\Assembly-CSharp.dll</HintPath>
-			<Private>False</Private>
-		</Reference>
-		<Reference Include="Mono.Cecil">
-		  <HintPath>E:\Downloads\Modding\BepInEx_win_x64_5.4.23.1\BepInEx\core\Mono.Cecil.dll</HintPath>
-		</Reference>
-		<Reference Include="Mono.Cecil.Mdb">
-		  <HintPath>E:\Downloads\Modding\BepInEx_win_x64_5.4.23.1\BepInEx\core\Mono.Cecil.Mdb.dll</HintPath>
-		</Reference>
-		<Reference Include="Mono.Cecil.Pdb">
-		  <HintPath>E:\Downloads\Modding\BepInEx_win_x64_5.4.23.1\BepInEx\core\Mono.Cecil.Pdb.dll</HintPath>
-		</Reference>
-		<Reference Include="Mono.Cecil.Rocks">
-		  <HintPath>E:\Downloads\Modding\BepInEx_win_x64_5.4.23.1\BepInEx\core\Mono.Cecil.Rocks.dll</HintPath>
-		</Reference>
-		<Reference Include="MonoMod.RuntimeDetour">
-		  <HintPath>E:\Downloads\Modding\BepInEx_win_x64_5.4.23.1\BepInEx\core\MonoMod.RuntimeDetour.dll</HintPath>
-		</Reference>
-		<Reference Include="MonoMod.Utils">
-		  <HintPath>E:\Downloads\Modding\BepInEx_win_x64_5.4.23.1\BepInEx\core\MonoMod.Utils.dll</HintPath>
-		</Reference>
-		<Reference Include="SimpleJSON">
-		  <HintPath>D:\Games\Steam\steamapps\common\Quasimorph\Quasimorph_Data\Managed\SimpleJSON.dll</HintPath>
-		</Reference>
-		<Reference Include="UnityEngine">
-			<HintPath>$(GAME_PATH)\Quasimorph_Data\Managed\UnityEngine.dll</HintPath>
-			<Private>False</Private>
-		</Reference>
-		<Reference Include="UnityEngine.CoreModule">
-			<HintPath>$(GAME_PATH)\Quasimorph_Data\Managed\UnityEngine.CoreModule.dll</HintPath>
-			<Private>False</Private>
-		</Reference>
-	</ItemGroup>
 	<PropertyGroup>
 		<GAME_NAME>Quasimorph</GAME_NAME>
-		<!--<GAME_STEAM_ID>1948280</GAME_STEAM_ID>-->
-		<MOD_NAME>QM-ChangeExploredColor</MOD_NAME>
+		<SteamId>3281977248</SteamId>
 	</PropertyGroup>
 	<PropertyGroup>
 		<GAME_PATH Condition="!Exists('$(GAME_PATH)')">$([MSBuild]::GetRegistryValueFromView('HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Uninstall\Steam App $(GAME_STEAM_ID)', 'InstallLocation', null, RegistryView.Registry64, RegistryView.Registry32))</GAME_PATH>
@@ -64,31 +21,56 @@
 		<GAME_PATH Condition="!Exists('$(GAME_PATH)')">C:\Program Files (x86)\Steam\steamapps\common\$(GAME_NAME)</GAME_PATH>
 	</PropertyGroup>
 	<PropertyGroup>
-		<OUTPUT_PATH Condition="!Exists('$(OUTPUT_PATH)')">$(GAME_PATH)/BepInEx/plugins/$(MOD_NAME)</OUTPUT_PATH>
-		<!--<TMP_OUTPUT_PATH>$(TargetDir)/tmp</TMP_OUTPUT_PATH>-->
+		<WorkshopPath>$(GAME_PATH)\..\..\workshop\content\2059170\$(SteamId)\</WorkshopPath>
+		<ManagedPath>$(GAME_PATH)\$(GAME_NAME)_Data\Managed\</ManagedPath>
 	</PropertyGroup>
-	<Target Name="PrintVars" BeforeTargets="BeforeBuild">
-		<Message Text="Game Path: $(GAME_PATH)" Importance="high" />
-		<Message Text="Output Path: $(OUTPUT_PATH)" Importance="high" />
-	</Target>
-	<!--<Target Name="CopyToGameDir" AfterTargets="AfterBuild">
-		<MakeDir Directories="$(OUTPUT_PATH)" />
-		<Copy SourceFiles="$(TargetDir)$(TargetName).dll" DestinationFolder="$(OUTPUT_PATH)"/>
-		<Copy SourceFiles="$(TargetDir)$(TargetName).pdb" DestinationFolder="$(OUTPUT_PATH)"/>
-	</Target>-->
+	
+	<ItemGroup>
+		<PackageReference Include="BepInEx.AssemblyPublicizer.MSBuild" Version="0.4.2" />
+	</ItemGroup>
+	<ItemGroup>
+		<Compile Remove="packages\BepInEx.AssemblyPublicizer.MSBuild.0.4.2\contentFiles\cs\any\IgnoresAccessChecksToAttribute.cs" />
+	</ItemGroup>
+	<ItemGroup>
+		<Reference Include="Assembly-CSharp" publicize="true">
+			<HintPath>$(ManagedPath)Assembly-CSharp.dll</HintPath>
+			<Private>False</Private>
+		</Reference>
+		<Reference Include="SimpleJSON">
+		  <HintPath>$(ManagedPath)SimpleJSON.dll</HintPath>
+		</Reference>
+		<Reference Include="UnityEngine">
+			<HintPath>$(ManagedPath)UnityEngine.dll</HintPath>
+			<Private>False</Private>
+		</Reference>
+		<Reference Include="UnityEngine.CoreModule">
+			<HintPath>$(ManagedPath)UnityEngine.CoreModule.dll</HintPath>
+			<Private>False</Private>
+		</Reference>
+	</ItemGroup>
 	<PropertyGroup>
-		<PACKAGE_TEMP_PATH>$(ProjectDir)../PackageTemp/</PACKAGE_TEMP_PATH>
+		<PackageFolder>$(ProjectDir)../package/</PackageFolder>
 	</PropertyGroup>
 
-	<!--<Target Condition="'$(Configuration)' == 'Release'" Name="PackageRelease" AfterTargets="AfterBuild">
-		<RemoveDir Directories="$(PACKAGE_TEMP_PATH)" />
-		<MakeDir Directories="$(PACKAGE_TEMP_PATH)" />
-		<Copy SourceFiles="$(TargetDir)$(TargetName).dll" DestinationFolder="$(PACKAGE_TEMP_PATH)"/>
-		<Delete Files="$(ProjectDir)../$(TargetName).zip" />
-		<ZipDirectory SourceDirectory="$(PACKAGE_TEMP_PATH)" DestinationFile="$(ProjectDir)../$(TargetName).zip" />
-		<RemoveDir Directories="$(PACKAGE_TEMP_PATH)" />
+	<Target Name="PostBuild" AfterTargets="PostBuildEvent">
+		<Exec Command="@echo off&#xD;&#xA;set deployDir=&quot;$(WorkshopPath)&quot;&#xD;&#xA;&#xD;&#xA;xcopy /f /y &quot;../modmanifest.json&quot; &quot;$(TargetDir)&quot;&#xD;&#xA;&#xD;&#xA;if '$(SteamId)'=='' (echo SteamId in project not set.  Aborting Workshop Deployment &amp;&amp; exit)&#xD;&#xA;echo deploying to %25deployDir%25&#xD;&#xA;&#xD;&#xA;mkdir &quot;$(WorkshopPath)&quot;&#xD;&#xA;&#xD;&#xA;xcopy /f /y &quot;$(ProjectDir)../media/thumbnail.png&quot; %25deployDir%25&#xD;&#xA;xcopy /f /y &quot;$(ProjectDir)../modmanifest.json&quot; %25deployDir%25&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;xcopy /f /y   &quot;$(TargetDir)$(TargetName).*&quot; %25deployDir%25&#xD;&#xA;xcopy /f /y   &quot;$(TargetDir)0Harmony.dll&quot; %25deployDir%25&#xD;&#xA;" />
+		<ItemGroup>
+			<WorkshopSourceFile Include="$(WorkshopPath)*.*" />
+			<PackageRemoveFiles Include="$(PackageFolder)$(TargetName)/*.pdb" />
+		</ItemGroup>
+	</Target>
+	<Target Condition="'$(SteamId)'!=''" Name="PostBuildPackage" AfterTargets="PostBuildEvent">
+		<ItemGroup>
+			<WorkshopSourceFile Include="$(WorkshopPath)*.*" />
+			<PackageRemoveFiles Include="$(PackageFolder)$(TargetName)/*.pdb" />
+		</ItemGroup>
 
-	</Target>-->
+		<Message Text="---------- Creating Package: $(PackageFolder)$(TargetName)/*.pdb" Importance="high" />
+		<RemoveDir Directories="$(PackageFolder)" />
+		<Copy SourceFiles="@(WorkshopSourceFile)" DestinationFolder="$(PackageFolder)$(TargetName)"></Copy>
+		<Delete Files="@(PackageRemoveFiles)" />
+		<ZipDirectory SourceDirectory="$(PackageFolder)" DestinationFile="$(PackageFolder)../$(TargetName).zip" Overwrite="true" />
+	</Target>
 	<ItemGroup>
 	  <Reference Update="System">
 	    <Private>False</Private>
@@ -134,8 +116,4 @@
 	    <Private>False</Private>
 	  </Reference>
 	</ItemGroup>
-	<Target Name="PostBuild" AfterTargets="PostBuildEvent">
-	  <Exec Command="set targetDir=D:\Games\Steam\steamapps\workshop\content\2059170\3281977248\&#xD;&#xA;&#xD;&#xA;xcopy /y $(TargetDir)$(TargetName).* %25targetDir%25&#xD;&#xA;xcopy /y $(TargetDir)0Harmony.dll %25targetDir%25&#xD;&#xA;&#xD;&#xA;copy /y ..\modmanifest.json %25targetDir%25&#xD;&#xA;" />
-	</Target>
-	
 </Project>
