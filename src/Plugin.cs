@@ -38,9 +38,11 @@ namespace QM_ChangeExploredColor
         /// Game's App Data folder.
         /// </summary>
         private static string AllModsConfigFolder { get; set; }
-
+        
 
         public static Color ExploredOutlineColor { get; private set; }
+
+        public const byte ExploredOutlineShaderId = 4;
 
         static Plugin()
         {
@@ -55,7 +57,7 @@ namespace QM_ChangeExploredColor
             ExploredOutlineColor = Color.green;
         }
 
-        [Hook(ModHookType.AfterBootstrap)]
+        [Hook(ModHookType.BeforeBootstrap)]
         public static void Bootstrap(IModContext context)
         {
             Directory.CreateDirectory(AllModsConfigFolder);

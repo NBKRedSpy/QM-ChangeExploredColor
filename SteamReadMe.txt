@@ -1,10 +1,6 @@
 [h1]Quasimorph Explored Outline[/h1]
 
 
-[h1]Temporary Update[/h1]
-
-This is a temporary update to quickly provide 0.8.5 support.  There is an issue with corpses not highlighting based on explored state.  This is being researched.
-
 [h1]Info[/h1]
 
 This mod changes the outline of storage containers that have already been opened, even if they have items still in them.  By default the outline is green, but this can be configured.
@@ -45,6 +41,11 @@ Thanks!
 Source code is available on GitHub https://github.com/NBKRedSpy/QM-ChangeExploredColor
 
 [h1]Change Log[/h1]
+
+[h2]1.4.1[/h2]
+[list]
+[*]Corpse highlighting fixed
+[/list]
 
 [h2]1.4.0[/h2]
 [list]

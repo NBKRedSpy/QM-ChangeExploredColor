@@ -12,6 +12,7 @@
 	<PropertyGroup>
 		<GAME_NAME>Quasimorph</GAME_NAME>
 		<SteamId>3281977248</SteamId>
+		<RootNamespace>QM_ChangeExploredColor</RootNamespace>
 	</PropertyGroup>
 	<PropertyGroup>
 		<GAME_PATH Condition="!Exists('$(GAME_PATH)')">$([MSBuild]::GetRegistryValueFromView('HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Uninstall\Steam App $(GAME_STEAM_ID)', 'InstallLocation', null, RegistryView.Registry64, RegistryView.Registry32))</GAME_PATH>
