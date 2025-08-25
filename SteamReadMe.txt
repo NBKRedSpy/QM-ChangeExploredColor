@@ -10,8 +10,7 @@ Unexplored and empty containers will still follow the normal game rules where wh
 
 [h1]Configuration[/h1]
 
-The configuration file is located at [i]%UserProfile%\AppData\LocalLow\Magnum Scriptum Ltd\Quasimorph_ModConfigs\QM-ChangeExploredColor\QM-ChangeExploredColor.json[/i] .
-The file will be created the first time the game is run.
+The mod can be configured in the Mods menu at the main menu, or directly in the file located at [i]%UserProfile%\AppData\LocalLow\Magnum Scriptum Ltd\Quasimorph_ModConfigs\QM-ChangeExploredColor\QM-ChangeExploredColor.json[/i] .
 [table]
 [tr]
 [td]Name
@@ -40,7 +39,16 @@ Thanks!
 
 Source code is available on GitHub https://github.com/NBKRedSpy/QM-ChangeExploredColor
 
+[h1]Credits[/h1]
+
+Special thanks to Crynano for his excellent Mod Configuration Menu.
+
 [h1]Change Log[/h1]
+
+[h2]1.5.0[/h2]
+[list]
+[*]MCM Integration
+[/list]
 
 [h2]1.4.1[/h2]
 [list]

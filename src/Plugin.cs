@@ -38,23 +38,23 @@ namespace QM_ChangeExploredColor
         /// Game's App Data folder.
         /// </summary>
         private static string AllModsConfigFolder { get; set; }
-        
 
-        public static Color ExploredOutlineColor { get; private set; }
+        private static McmConfiguration McmConfiguration { get; set; }
+
+
+        public static Color ExploredOutlineColor { get; set; }
 
         public const byte ExploredOutlineShaderId = 4;
 
         static Plugin()
         {
             ModAssemblyName = Assembly.GetExecutingAssembly().GetName().Name;
-
             AllModsConfigFolder = Path.Combine(Application.persistentDataPath, "../Quasimorph_ModConfigs/");
-
             ModsPersistenceFolder = Path.Combine(AllModsConfigFolder, ModAssemblyName);
-
             ConfigPath = Path.Combine(ModsPersistenceFolder, ModAssemblyName + ".json");
-
             ExploredOutlineColor = Color.green;
+
+            McmConfiguration = new McmConfiguration();
         }
 
         [Hook(ModHookType.BeforeBootstrap)]
@@ -67,6 +67,9 @@ namespace QM_ChangeExploredColor
             UpgradeModDirectory();
 
             SetConfig();
+
+            Plugin.McmConfiguration.TryConfigure();  //Log and continue if there is a MCM issue.
+
             Harmony harmony = new Harmony("nbk_redspy.QM_ChangeExploredColor");
             harmony.PatchAll();
 
@@ -95,22 +98,27 @@ namespace QM_ChangeExploredColor
             else
 
             {
-                //Write the default file.
-                try
-                {
-                    JSONObject obj = new JSONObject();
-                    obj.Add(nameof(Plugin.ExploredOutlineColor), new JSONObject().WriteColor(Color.green));
-                    string text = obj.ToString();
-
-                    File.WriteAllText(configPath, text);
-                }
-                catch (Exception ex)
-                {
-                    Debug.LogError($"Error writing configuration file {configPath}");
-                    Debug.LogException(ex);
-                }
+                WriteConfig(defaultColor);
             }
 
+        }
+
+        public static void WriteConfig(Color color)
+        {
+            //Write the default file.
+            try
+            {
+                JSONObject obj = new JSONObject();
+                obj.Add(nameof(Plugin.ExploredOutlineColor), new JSONObject().WriteColor(color));
+                string text = obj.ToString();
+
+                File.WriteAllText(ConfigPath, text);
+            }
+            catch (Exception ex)
+            {
+                Debug.LogError($"Error writing configuration file {ConfigPath}");
+                Debug.LogException(ex);
+            }
         }
 
         /// <summary>

@@ -11,8 +11,8 @@ Unexplored and empty containers will still follow the normal game rules where wh
 
 
 # Configuration
-The configuration file is located at ```%UserProfile%\AppData\LocalLow\Magnum Scriptum Ltd\Quasimorph_ModConfigs\QM-ChangeExploredColor\QM-ChangeExploredColor.json``` .
-The file will be created the first time the game is run.
+
+The mod can be configured in the Mods menu at the main menu, or directly in the file located at ```%UserProfile%\AppData\LocalLow\Magnum Scriptum Ltd\Quasimorph_ModConfigs\QM-ChangeExploredColor\QM-ChangeExploredColor.json``` .
 
 |Name|Default|Description|
 |--|--|--|
@@ -25,7 +25,13 @@ Thanks!
 # Source Code
 Source code is available on GitHub https://github.com/NBKRedSpy/QM-ChangeExploredColor
 
+# Credits
+Special thanks to Crynano for his excellent Mod Configuration Menu.
+
 # Change Log
+
+## 1.5.0
+* MCM Integration
 
 ## 1.4.1
 * Corpse highlighting fixed
