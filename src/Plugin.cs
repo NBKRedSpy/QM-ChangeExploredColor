@@ -1,6 +1,4 @@
-﻿// Ignore Spelling: Plugin
-
-using HarmonyLib;
+﻿using HarmonyLib;
 using MGSC;
 using System;
 using System.Collections.Generic;
@@ -54,7 +52,6 @@ namespace QM_ChangeExploredColor
             ConfigPath = Path.Combine(ModsPersistenceFolder, ModAssemblyName + ".json");
             ExploredOutlineColor = Color.green;
 
-            McmConfiguration = new McmConfiguration();
         }
 
         [Hook(ModHookType.BeforeBootstrap)]
@@ -68,6 +65,8 @@ namespace QM_ChangeExploredColor
 
             SetConfig();
 
+
+            McmConfiguration = new McmConfiguration();
             Plugin.McmConfiguration.TryConfigure();  //Log and continue if there is a MCM issue.
 
             Harmony harmony = new Harmony("nbk_redspy.QM_ChangeExploredColor");

@@ -45,6 +45,11 @@ Special thanks to Crynano for his excellent Mod Configuration Menu.
 
 [h1]Change Log[/h1]
 
+[h2]1.5.1[/h2]
+[list]
+[*]MCM is now optional.
+[/list]
+
 [h2]1.5.0[/h2]
 [list]
 [*]MCM Integration

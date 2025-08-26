@@ -3,7 +3,7 @@
     "Assemblies": [
         "QM-ChangeExploredColor.dll"
     ],
-    "Dependencies": ["Crynano_ModConfigMenu"],
+    "Dependencies": [],
     "SteamTags": [
         "Quality of Life",
         "0.9.1",

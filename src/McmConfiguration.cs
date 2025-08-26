@@ -3,6 +3,7 @@ using ModConfigMenu;
 using ModConfigMenu.Objects;
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Reflection;
 using System.Text;
@@ -23,13 +24,18 @@ namespace QM_ChangeExploredColor
                 Configure();
                 return true;
             }
+            catch (FileNotFoundException)
+            {
+                Debug.Log($"[{Plugin.ModAssemblyName}] Bypassing MCM. The 'Mod Configuration Menu' mod is not loaded. ");
+            }
             catch (Exception ex)
             {
-                Debug.Log("An error occurred when configuring MCM");
+                Debug.Log($"[{Plugin.ModAssemblyName}] Bypassing MCM. ");
                 Debug.LogException(ex);
-                return false;
             }
-            
+
+            return false;
+
         }
         public void Configure()
         {

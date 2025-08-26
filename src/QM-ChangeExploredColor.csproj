@@ -35,6 +35,7 @@
 	<ItemGroup>
 		<Reference Include="MCM">
 			<HintPath>$(GAME_PATH)\..\..\workshop\content\2059170\3469678797\MCM.dll</HintPath>
+			<HintPath>./lib/MCM-stripped.dll</HintPath>
 			<Private>False</Private>
 		</Reference>
 

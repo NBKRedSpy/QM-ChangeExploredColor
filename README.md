@@ -29,6 +29,8 @@ Source code is available on GitHub https://github.com/NBKRedSpy/QM-ChangeExplore
 Special thanks to Crynano for his excellent Mod Configuration Menu.
 
 # Change Log
+## 1.5.1
+* MCM is now optional.  
 
 ## 1.5.0
 * MCM Integration
