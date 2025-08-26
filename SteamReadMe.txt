@@ -48,6 +48,7 @@ Special thanks to Crynano for his excellent Mod Configuration Menu.
 [h2]1.5.1[/h2]
 [list]
 [*]MCM is now optional.
+[*]Thanks to Steam user ckhontee for reporting this.
 [/list]
 
 [h2]1.5.0[/h2]

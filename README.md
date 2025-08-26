@@ -31,6 +31,7 @@ Special thanks to Crynano for his excellent Mod Configuration Menu.
 # Change Log
 ## 1.5.1
 * MCM is now optional.  
+* Thanks to Steam user ckhontee for reporting this.
 
 ## 1.5.0
 * MCM Integration
